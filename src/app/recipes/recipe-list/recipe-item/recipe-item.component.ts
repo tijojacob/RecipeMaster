@@ -13,7 +13,9 @@ export class RecipeItemComponent {
     onSelected(){
       // this.recipeSelected.emit();
       
-      this.recipeServiceList.onRecipeSelect.emit(this.recipe);
+      // this.recipeServiceList.onRecipeSelect.emit(this.recipe);
+      this.recipeServiceList.onRecipeSelect.next(this.recipe);
+
     }
     constructor(private recipeServiceList : RecipeService)
     {

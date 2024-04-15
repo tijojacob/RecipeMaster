@@ -2,8 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf=" (header ==='Recipes') ||(header ==='Recipe Book')"></app-recipes>
-      <app-shopping-list *ngIf="(header ==='Shopping List') ||(header ==='Recipe Book')"></app-shopping-list>
+      <!-- <app-recipes *ngIf=" (header ==='Recipes') ||(header ==='Recipe Book')"></app-recipes>
+      <app-shopping-list *ngIf="(header ==='Shopping List') ||(header ==='Recipe Book')"></app-shopping-list> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

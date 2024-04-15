@@ -13,20 +13,11 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { shoppingListService } from './shopping-list/shopping-list.service';
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipieEditComponent } from './recipes/recipie-edit/recipie-edit.component';
 
-const appRoute : Routes=[
-  {path:'',component:HeaderComponent},
-  {path:'recipes',component:RecipesComponent,
-    children :[
-      {path:'recipe-list',component:RecipeListComponent,
-      children: [{path:'recipe-item',component:RecipeItemComponent}]}
-    ]},
-  {path:'shopping-list',component:ShoppingListComponent,
-    children: [{path:'shopping-edit',component:ShoppingEditComponent}]
-  },
-  { path : '**' ,component : HeaderComponent}
-]
+
 
 @NgModule({
   declarations: [
@@ -38,13 +29,15 @@ const appRoute : Routes=[
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    RecipeStartComponent,
+    RecipieEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoute)
+    AppRoutingModule    
   ],
   providers: [shoppingListService],
   bootstrap: [AppComponent]

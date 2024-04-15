@@ -6,6 +6,7 @@
 <div class="row">
     <div class="col-xs-12">
         <button
+        routerLink="new"
             type="button"
             class="btn btn-success"
         >
@@ -19,7 +20,7 @@
 <div class="list-group ">
     <ul class="list-group" >       
              <!-- <app-recipe-item *ngFor="let recipEl of recipesList" [recipe]="recipEl" (recipeSelected)="onRecipeSelect(recipEl)"></app-recipe-item>              -->
-             <app-recipe-item *ngFor="let recipEl of recipesList" [recipe]="recipEl" ></app-recipe-item>             
+             <app-recipe-item *ngFor="let recipEl of recipesList let x= index" [recipe]="recipEl" [routerLink]="[x]" ></app-recipe-item>             
 
     </ul>
 </div>

@@ -2,7 +2,8 @@
     class="navbar navbar-expand-sm navbar-light bg-light"
 >
     <div class="container">
-        <a class="navbar-brand" href="#" (click)="onHeaderClick('Recipe Book')">Recipe  Book</a> 
+        <!-- <a class="navbar-brand" href="#" (click)="onHeaderClick('Recipe Book')">Recipe  Book</a>  -->
+        <a class="navbar-brand" >Recipe  Book</a> 
         <button
             class="navbar-toggler d-lg-none"
             type="button"
@@ -17,18 +18,20 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" (click)="onHeaderClick('Recipes')">Recipes</a>
+                    <a class="nav-link" routerLink="/recipes" routerLinkActive="active">Recipes</a>
+                    <!-- <a class="nav-link" href="#" (click)="onHeaderClick('Recipes')">Recipes</a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" (click)="onHeaderClick('Shopping List')">Shopping List</a>
+                    <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
+                    <!-- <a class="nav-link" href="#" (click)="onHeaderClick('Shopping List')">Shopping List</a> -->
                 </li>
                 
             </ul>
-            <form class="d-flex my-2 my-lg-0">                
+            <form style="cursor: pointer;" class="d-flex my-2 my-lg-0">                
                 <div class="nav-item dropdown">
                     <a
                         class="nav-link dropdown-toggle"
-                        href="#"
+                        
                         id="dropdownId"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
@@ -39,10 +42,10 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownId"
                     >
-                        <a class="dropdown-item" href="#"
+                        <a class="dropdown-item" 
                             >Save Data</a
                         >
-                        <a class="dropdown-item" href="#"
+                        <a class="dropdown-item" 
                             >Fetch Data</a
                         >
                     </div>
