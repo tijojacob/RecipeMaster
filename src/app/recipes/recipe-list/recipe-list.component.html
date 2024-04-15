@@ -1,0 +1,26 @@
+<div
+   style="margin-top: 10px !important;"
+>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <button
+            type="button"
+            class="btn btn-success"
+        >
+            New Recipe
+        </button>
+        
+    </div>    
+</div>
+<hr>
+
+<div class="list-group ">
+    <ul class="list-group" >       
+             <!-- <app-recipe-item *ngFor="let recipEl of recipesList" [recipe]="recipEl" (recipeSelected)="onRecipeSelect(recipEl)"></app-recipe-item>              -->
+             <app-recipe-item *ngFor="let recipEl of recipesList" [recipe]="recipEl" ></app-recipe-item>             
+
+    </ul>
+</div>
+</div>
