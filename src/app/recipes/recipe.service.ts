@@ -11,18 +11,7 @@ export class RecipeService{
     {
 
     }    
-    recipies: Recipe[]=[new Recipe(
-        "Big Mac",
-        "Macdonals",
-        "https://cdn-icons-png.flaticon.com/128/737/737967.png",
-        [new Ingredients('Patty','30'),new Ingredients('Cookie','15')]
-      ),
-      new Recipe(
-        "Double Big Mac",
-        "Added Value",
-        "https://cdn-icons-png.flaticon.com/128/1037/1037762.png",
-        [new Ingredients('Double Patty','60'),new Ingredients('Baecon','25')]
-      )]
+    recipies: Recipe[]=[]
     
       getRecipeList()
       {
