@@ -20,7 +20,7 @@
             <ul style="cursor: pointer;"  class="dropdown-menu">
                 <li><a class="dropdown-item" (click)="AddtoShoppingList(recipeSelectDetails.ingredient)">To Shopping List</a></li>
                 <li><a class="dropdown-item" [routerLink]="['edit']">Edit Recipe</a></li>
-                <li><a class="dropdown-item" >Delete Recipe</a></li>
+                <li><a class="dropdown-item" [routerLink]="['../']" (click)="onRecipeDelete()">Delete Recipe</a></li>
             </ul>
         </div>
     </div>

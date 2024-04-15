@@ -1,10 +1,16 @@
-<app-header (isHeaderClick)="onNavBarClick($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <!-- <app-recipes *ngIf=" (header ==='Recipes') ||(header ==='Recipe Book')"></app-recipes>
       <app-shopping-list *ngIf="(header ==='Shopping List') ||(header ==='Recipe Book')"></app-shopping-list> -->
-      <router-outlet></router-outlet>
+      <router-outlet></router-outlet>      
+      <div *ngIf="err.length>0" class="alert alert-danger">
+        <div class="form-group">
+            {{err}}            
+        </div>
+          <button class="form-control" type="button" class="btn btn-danger" (click)="err=''">Okay</button>
+      </div>      
     </div>
   </div>
 </div>

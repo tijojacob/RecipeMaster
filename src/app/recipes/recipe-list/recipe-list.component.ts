@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -8,12 +9,14 @@ import { RecipeService } from '../recipe.service';
   styleUrl: './recipe-list.component.css'
 })
 export class RecipeListComponent {
-
+  subs : Subscription;
   // @Output() recipeSelect2 = new EventEmitter<Recipe>();
   recipesList : Recipe[]=[];
   constructor(private recipeListService : RecipeService)
   {
-
+   this.subs= recipeListService.onRecipeUpdate.subscribe(()=>{
+      this.recipesList=this.recipeListService.getRecipeList()
+    })
   }
 
   ngOnInit()
@@ -26,4 +29,9 @@ export class RecipeListComponent {
   //     recipeEl
   //   )
   // }
+
+  ngOnDestroy()
+  {
+    this.subs.unsubscribe();
+  }
 }

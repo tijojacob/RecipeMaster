@@ -10,9 +10,16 @@ export class RecipeService{
     constructor(private shoppingListService : shoppingListService)
     {
 
-    }    
-    recipies: Recipe[]=[]
+    }   
+    deleteRecipies: Recipe[]=[]; 
+    private recipies : Recipe[]=[];    
     
+      setRecipeFrmServer(recipe : Recipe[])
+      {
+        this.recipies=recipe;
+        this.onRecipeUpdate.next(this.recipies.slice())
+      }
+
       getRecipeList()
       {
         return this.recipies.slice();
@@ -25,10 +32,39 @@ export class RecipeService{
 
       // onRecipeSelect = new EventEmitter<Recipe>();
       onRecipeSelect = new Subject<Recipe>();
+      onRecipeUpdate = new Subject<Recipe[]>();
 
       
       onShoppingListAdd(e : Ingredients[])
       {
         this.shoppingListService.AddtoShoppingList(e);
       }
+
+      addRecipe(recipe : Recipe)
+      {
+        this.recipies.push(recipe);
+        this.onRecipeUpdate.next(this.recipies.slice());
+      }
+
+      updateRecipeAtindex(i: number,recipe:Recipe)
+      {
+        this.recipies[i]=recipe;
+        this.onRecipeUpdate.next(this.recipies.slice())
+      }
+
+      deleteRecipeAtindex(i: number)
+      {
+        for(let j=0,k=0;j<this.recipies.length;j++)
+        {
+          if(i!==j)
+          {
+            this.deleteRecipies[k]=this.recipies[j];
+            k++;
+          }
+        }
+        this.recipies=this.deleteRecipies;
+        this.deleteRecipies=[];
+        this.onRecipeUpdate.next(this.recipies.slice())
+      }
+
 }

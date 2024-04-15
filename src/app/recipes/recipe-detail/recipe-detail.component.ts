@@ -34,4 +34,10 @@ export class RecipeDetailComponent {
   {
     //console.log(this.activatedRoute.snapshot.params['id']);
   }
+
+  onRecipeDelete()
+  {
+    this.recipeListService.deleteRecipeAtindex(this.recipeId);
+  }
+
 }

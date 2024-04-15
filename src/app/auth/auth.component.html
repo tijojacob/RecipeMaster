@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col col-md-offset-3">
+        <div *ngIf="err.length>0" class="alert alert-danger">
+        <div class="form-group">
+            {{err}}            
+        </div>
+            <button class="form-control" type="button" class="btn btn-danger" (click)="err=''">Okay</button>
+        </div>
+        <div *ngIf="succ.length>0" class="alert alert-success">
+            <div class="form-group">
+                {{succ}}            
+            </div>
+                <button class="form-control" type="button" class="btn btn-primary" (click)="succ=''">Okay</button>
+            </div>
+        <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="!isLoading">
+            <div class="form-group form-control">
+                <label for="email">E-mail</label>
+                <input type="text" name="email" class="form-control" ngModel required email #eml="ngModel" form>
+                <span class="help-block" *ngIf="(!eml.valid && eml.touched)">Enter a valid email id</span>
+            </div>
+            <div class="form-group form-control" style="margin-top: 10px;">
+                <label for="password">Password</label>                
+                <input type="password" name="password" class="form-control" ngModel required #pwd="ngModel" minlength="6">
+                <span class="help-block" *ngIf="(!pwd.valid && pwd.touched)">Enter a password with 6 character</span>                
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <button [disabled]="(!f.valid && f.touched) || (f.untouched && f.pristine)" type="submit" class="btn btn-primary" style="margin-right: 10px;">{{loginBtnText}}</button>
+                |
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;" (click)="[onSwitchClick(f)]">{{switchBtnText}}</button>
+            </div>
+            <div>
+            </div>
+        </form>
+    </div>
+</div>
