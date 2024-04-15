@@ -24,6 +24,8 @@ import { AUthService } from './auth/auth.service';
 import { LoadingSpinner } from './shared/loading-spinner.componen';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AuthGuard } from './auth/auth.guard';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 
 
@@ -41,7 +43,9 @@ import { AuthGuard } from './auth/auth.guard';
     RecipeStartComponent,
     RecipieEditComponent,
     AuthComponent,
-    LoadingSpinner
+    LoadingSpinner,
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,6 @@ import { AuthGuard } from './auth/auth.guard';
     ReactiveFormsModule
   ],
   providers: [shoppingListService, RecipeService, DataStorageService,RecipiesResolverService, AUthService,{provide : HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi : true},AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
