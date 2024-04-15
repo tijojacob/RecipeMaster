@@ -56,7 +56,7 @@ export class AuthComponent{
         {
             this.auth = this.authService.signIn(email,pwd);
         }
-        //setTimeout(()=>{                 
+        setTimeout(()=>{                 
             this.auth.subscribe((respData)=>{
                 console.log(respData);
                 if(respData.registered)
@@ -67,14 +67,16 @@ export class AuthComponent{
                     this.succ='Registration Successful; Please Login.'
                     this.showErrorAlert(this.succ);
                     this.dataService.error.next(this.succ);
+
                 }
+                this.isLoading=false;
             }, err=>{
                 this.showErrorAlert(err)
                 this.dataService.error.next(err);
+                this.isLoading=false;
             })            
             f.reset();
-            this.isLoading=false;
-        //},2000);
+        },1500);
     }  
     
     private showErrorAlert(message : string)
