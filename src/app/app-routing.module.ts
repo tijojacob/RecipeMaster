@@ -14,21 +14,25 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { shoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
 import { RecipieEditComponent } from "./recipes/recipie-edit/recipie-edit.component";
+import { RecipiesResolverService } from "./recipes/recipies-resolver.service";
+import { AuthComponent } from "./auth/auth.component";
+import { AuthGuard } from "./auth/auth.guard";
 
 const appRoute : Routes=[
     {path:'',redirectTo:'recipes',pathMatch:'full'},
-    {path:'recipes',component:RecipesComponent,
+    {path:'recipes',component:RecipesComponent, canActivate:[AuthGuard],
       children :[
         {path:'',component:RecipeStartComponent},
         {path:'new',component:RecipieEditComponent},
-        {path:':id',component:RecipeDetailComponent},
-        {path:':id/edit',component:RecipieEditComponent},
+        {path:':id',component:RecipeDetailComponent, resolve:[RecipiesResolverService]},
+        {path:':id/edit',component:RecipieEditComponent, resolve:[RecipiesResolverService]},
         // children: [{path:'recipe-item',component:RecipeItemComponent}]}
       ]},
     {path:'shopping-list',component:ShoppingListComponent,
       children: [{path:'shopping-edit',component:ShoppingEditComponent}]
     },
-    { path : '**' ,component : HeaderComponent}
+    {path:'auth',component:AuthComponent},
+    { path : '**' ,redirectTo:'recipes'}
   ]
 
 @NgModule({

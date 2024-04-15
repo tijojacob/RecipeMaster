@@ -16,7 +16,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0" *ngIf="isAuthenticated">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/recipes" routerLinkActive="active">Recipes</a>
                     <!-- <a class="nav-link" href="#" (click)="onHeaderClick('Recipes')">Recipes</a> -->
@@ -25,31 +25,38 @@
                     <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
                     <!-- <a class="nav-link" href="#" (click)="onHeaderClick('Shopping List')">Shopping List</a> -->
                 </li>
+                <li class="nav-item" *ngIf="!isAuthenticated">
+                    <a class="nav-link" routerLink="/auth" routerLinkActive="active">Authenticate</a>
+                    <!-- <a class="nav-link" href="#" (click)="onHeaderClick('Shopping List')">Shopping List</a> -->
+                </li>
                 
             </ul>
-            <form style="cursor: pointer;" class="d-flex my-2 my-lg-0">                
-                <div class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        
-                        id="dropdownId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Manage</a
-                    >
-                    <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownId"
-                    >
-                        <a class="dropdown-item" 
-                            >Save Data</a
+            <form style="cursor: pointer;" class="d-flex my-2 my-lg-0" *ngIf="isAuthenticated">  
+                    <div style="margin-right: 10px;" (click)="logOut()">
+                        Logout
+                    </div> 
+                    <div class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            
+                            id="dropdownId"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            >Manage</a
                         >
-                        <a class="dropdown-item" 
-                            >Fetch Data</a
+                        <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownId"
                         >
+                            <a class="dropdown-item" (click)="headerSave()" 
+                                >Save Data</a
+                            >
+                            <a class="dropdown-item" (click)="fetchData()"
+                                >Fetch Data</a
+                            >
+                        </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>

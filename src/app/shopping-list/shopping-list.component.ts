@@ -30,7 +30,7 @@ export class ShoppingListComponent {
       (ingredientList : Ingredients[])=>{
         this.ingredients = ingredientList;
       }
-    )
+    )    
   }
 
   // onIngredientsAdd(e : Ingredients)
@@ -46,5 +46,10 @@ export class ShoppingListComponent {
     ngOnDestroy()
     {
       this.ingSub.unsubscribe();
+    }
+
+    onEditItem(i : number)
+    {
+      this.shoppingListService.editingStarted.next(i);
     }
 }
