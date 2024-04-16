@@ -9,7 +9,7 @@ import { RecipieEditComponent } from "./recipie-edit/recipie-edit.component";
 import { RecipiesResolverService } from "./recipies-resolver.service";
 
 const recipeRoutes : Routes=[
-    {path:'recipes',component:RecipesComponent, canActivate:[AuthGuard],
+    {path:'',component:RecipesComponent, canActivate:[AuthGuard],
       children :[
         {path:'',component:RecipeStartComponent},
         {path:'new',component:RecipieEditComponent},
