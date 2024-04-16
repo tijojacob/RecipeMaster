@@ -5,7 +5,7 @@ import { ShoppingEditComponent } from "./shopping-edit/shopping-edit.component";
 import { ShoppingListComponent } from "./shopping-list.component";
 
 const shippingListRoutes : Routes=[
-    {path:'shopping-list',component:ShoppingListComponent,
+    {path:'',component:ShoppingListComponent,
       children: [{path:'shopping-edit',component:ShoppingEditComponent}]
     },
 ]

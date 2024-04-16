@@ -13,7 +13,7 @@ export class RecipeService{
     }   
     deleteRecipies: Recipe[]=[]; 
     private recipies : Recipe[]=[];
-        
+       
       setRecipeFrmServer(recipe : Recipe[])
       {
         this.recipies=recipe;
